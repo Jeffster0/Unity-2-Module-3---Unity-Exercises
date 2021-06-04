@@ -14,7 +14,7 @@ public class ZombieSpawnerScript : MonoBehaviour
 
     void Start()
     {
-        SpawnZombie();
+        StartCoroutine(ZombieSpawnerRepeater());
     }
 
     public Vector3 RandomPosition()
@@ -25,8 +25,17 @@ public class ZombieSpawnerScript : MonoBehaviour
     public void SpawnZombie()
     {
         // ADD CODE HERE
-
+        GameObject zombie = Instantiate(zombiePrefab);
+        zombie.transform.position = RandomPosition();
+        zombiePrefab.GetComponent<ZombieScript>().Init(target, this);
         // END OF CODE
+    }
+
+    public IEnumerator ZombieSpawnerRepeater()
+    {
+        yield return new WaitForSeconds(Random.Range(4,20));
+        SpawnZombie();
+        StartCoroutine(ZombieSpawnerRepeater());
     }
 
     public void ZombieHasDied()

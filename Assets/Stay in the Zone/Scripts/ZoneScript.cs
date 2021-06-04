@@ -58,21 +58,38 @@ public class ZoneScript : MonoBehaviour
     private void OnTriggerEnter(Collider other) 
     {
         // ADD CODE BELOW
-
+        if(other.CompareTag("Player"))
+        {
+            playerInside = true;
+            SetZoneHelper(true);
+            timer = stayTimer;
+        }
         // END OF CODE
     }
 
     private void OnTriggerStay(Collider other) 
     {
         // ADD CODE BELOW
-
+        if(playerInside)
+        {
+            timer -= Time.deltaTime;
+        }
+        if(timer <= 0)
+        {
+            ZoneSuccess();
+        }
         // END OF CODE
     }
 
     private void OnTriggerExit(Collider other) 
     {
         // ADD CODE BELOW
-
+        if(other.CompareTag("Player"))
+        {
+            playerInside = false;
+            SetZoneHelper(false);
+            timer = stayTimer;
+        }
         // END OF CODE
     }
 }

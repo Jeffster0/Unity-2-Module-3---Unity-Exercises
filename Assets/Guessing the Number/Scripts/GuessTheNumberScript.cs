@@ -18,6 +18,7 @@ public class GuessTheNumberScript : MonoBehaviour
     void Start()
     {
         currentNumber = GenerateRandomNumber();
+        GenerateHints(currentNumber);
         numberOfGuesses = 0;
         score = 0;
     }
@@ -40,7 +41,25 @@ public class GuessTheNumberScript : MonoBehaviour
         numberOfGuesses++;
         guessText.text = "You guessed " + guess + "\n";
         // WRITE CODE BELOW
-
+        int intGuess = int.Parse(guess);
+        if(intGuess == currentNumber)
+        {
+            score++;
+            guessText.text += "You are correct!";
+            currentNumber = GenerateRandomNumber();
+            GenerateHints(currentNumber);
+        }
+        else
+        {
+            if(intGuess < currentNumber)
+            {
+                guessText.text += "Your guess is too small!";
+            }
+            else
+            {
+                guessText.text += "Your guess is too big!";
+            }
+        }
         // END OF CODE
 
     }
@@ -50,7 +69,30 @@ public class GuessTheNumberScript : MonoBehaviour
         string hints = "";
 
         // WRITE CODE BELOW
-
+        if(chosenNumber % 2 == 0)
+        {
+            hints += "The number is even \n";
+        }
+        else
+        {
+            hints += "The number is odd \n";
+        }
+        if(chosenNumber < 10)
+        {
+            hints += "The number is single digit \n";
+        }
+        else if(chosenNumber > 50)
+        {
+            hints += "The number is larger than 50 \n";
+        }
+        if(chosenNumber % 60 == 0)
+        {
+            hints += "The number is a multiple of 60 \n";
+        }
+        if(Mathf.Sqrt(chosenNumber) % 1 == 0)
+        {
+            hints += "The number is a perfect square \n";
+        }
         // END OF CODE
 
         hintsText.text = hints;

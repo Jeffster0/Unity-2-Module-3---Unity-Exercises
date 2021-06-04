@@ -567,7 +567,19 @@ MonoBehaviour:
   maxHealth: 100
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4481339545071640496}
+        m_TargetAssemblyTypeName: ZombieScript, Assembly-CSharp
+        m_MethodName: KillZombie
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4481339545071640496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -580,6 +592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e81637d812a241af9ced80e730e2938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aicc: {fileID: 8329241944551444782}
   parentSpawner: {fileID: 0}
 --- !u!1 &8329241944562178382
 GameObject:
