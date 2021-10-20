@@ -51,8 +51,8 @@ public class CannonballScript : MonoBehaviour
         {
             DestructableBuilding block = rayhit.collider.GetComponent<DestructableBuilding>();
             // ADD CODE HERE
-            RigidBody blockrb = block.GetComponent<Rigidbody>();
-            blockrb.AddExplosiveForce(explosionPower,this.transform.position, explosionRadius);
+            Rigidbody blockrb = block.GetComponent<Rigidbody>();
+            blockrb.AddExplosionForce(explosionPower,this.transform.position, explosionRadius);
             // END OF CODE
         }
     }
